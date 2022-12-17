@@ -84,6 +84,7 @@ export default class Square {
                 }
             });
             squareElement.classList.add(`bg-${startSquare}`);
+            squareElement.setAttribute('draggable', true);
         } else if (this.endSquare) {
             squareElement.classList.forEach((className) => {
                 if (bgRegex.test(className)) {
@@ -91,6 +92,7 @@ export default class Square {
                 }
             });
             squareElement.classList.add(`bg-${endSquare}`);
+            squareElement.setAttribute('draggable', true);
         }
     }
 
