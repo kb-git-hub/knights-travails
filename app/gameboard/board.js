@@ -1,5 +1,6 @@
 import { returnBoardDims } from '../config/board.config.js';
 import { squareConfig } from '../config/square.config.js';
+import BFS from '../graph/bfs.class.js';
 import generateQueryConstructor from '../utils/utils.js';
 import Square from './square.class.js';
 
@@ -42,5 +43,14 @@ export default class Gameboard {
                 this.chessBoard[square.position] = square;
             }
         }
+    }
+
+    getGraph(input) {
+        this.knightGraph = input;
+    }
+
+    runBFS() {
+        const bfs = new BFS(this, this.knightGraph);
+        bfs.findShortestPath();
     }
 }

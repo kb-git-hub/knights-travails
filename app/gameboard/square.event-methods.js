@@ -40,6 +40,8 @@ function dragDropEvents() {
         board.draggedSquare.resetBg();
         board.draggedSquare.renderHTMLStyling();
         board.draggedSquare.renderStartEndSquares();
+
+        board.runBFS();
     });
 }
 

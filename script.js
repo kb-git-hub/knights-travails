@@ -4,4 +4,4 @@ import KnightGraph from './app/graph/graph.js';
 
 const board = new Gameboard(boardConfig);
 board.build();
-const knightGraph = new KnightGraph(Object.keys(board.chessBoard));
+board.getGraph(new KnightGraph(Object.keys(board.chessBoard)));
