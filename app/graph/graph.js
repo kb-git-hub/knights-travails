@@ -23,13 +23,45 @@ bfs for shortest path
     */
 
 export default class KnightGraph {
-    constructor() {
-        generateQueryConstructor.call(this, ...arguments);
+    constructor(board) {
+        this.board = board.map((element) => element.replace(/[^\d]/g, '').split('').map(Number));
+        this.numberofNodes = 0;
+        this.adjacentList = {};
+        this.buildVerticesFromBoard();
+        this.addEdges();
     }
 
-    buildGraphFromInput() {
-        const { board } = this;
-        const modifiedBoard = board.map((element) => element.replace(/[^\d]/g, '').split('').map(Number));
-        console.log(modifiedBoard);
+    addVertex(node) {
+        this.adjacentList[node] = [];
+        this.numberofNodes++;
+    }
+
+    buildVerticesFromBoard() {
+        this.board.forEach((square) => this.addVertex(square));
+    }
+
+    addEdges() {
+        this.board.forEach((square) => {
+            const [row, col] = square; // loop through this board
+            const adjKey = [row, col].join(',');
+
+            let result = [
+                [row + 2, col + 1],
+                [row + 1, col + 2],
+                [row - 1, col + 2],
+                [row - 2, col + 1],
+                [row - 2, col - 1],
+                [row - 1, col - 2],
+                [row + 1, col - 2],
+                [row + 2, col - 1],
+            ];
+            result = result.filter((item) => item[0] <= 8 && item[0] >= 1 && item[1] <= 8 && item[1] >= 1);
+            this.adjacentList[adjKey] = result;
+        });
+    }
+
+    bfs(source, destination) {
+        const { graph } = this.adjacentList;
+        console.log(source, destination);
     }
 }
