@@ -32,7 +32,7 @@ function dragDropEvents() {
         this.endSquare = board.draggedSquare.endSquare;
         this.renderSquareType();
         board.draggedSquare.resetSquare();
-        ///
+
         this.resetBg();
         this.renderHTMLStyling();
         this.renderStartEndSquares();
@@ -40,9 +40,6 @@ function dragDropEvents() {
         board.draggedSquare.resetBg();
         board.draggedSquare.renderHTMLStyling();
         board.draggedSquare.renderStartEndSquares();
-
-        // this.resetStyles();
-        // board.draggedSquare.resetStyles();
     });
 }
 

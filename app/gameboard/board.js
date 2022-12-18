@@ -29,7 +29,7 @@ export default class Gameboard {
 
     buildBoardSquares() {
         this.chessBoard = {};
-        this.squareCount = 2;
+        this.squareCount = 8;
 
         const squareSize = Math.floor(this.boardDimensions / this.squareCount);
 
