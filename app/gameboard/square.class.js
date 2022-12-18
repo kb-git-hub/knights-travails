@@ -33,8 +33,8 @@ export default class Square {
 
     renderHTMLStyling() {
         const { squareElement, squareSize, settings } = this;
-        const { lightSquare, darkSquare } = settings;
-        const squareColor = this.color === 'light' ? lightSquare : darkSquare;
+        const { lightSquareColor, darkSquareColor } = settings;
+        const squareColor = this.color === 'light' ? lightSquareColor : darkSquareColor;
         const htmlStyle = {
             height: `h-[${squareSize}px]`,
             width: `w-[${squareSize}px]`,
@@ -58,7 +58,6 @@ export default class Square {
 
     renderAttributes() {
         const {
-            squareElement,
             board: { squareCount },
         } = this;
         this.startSquare = this.position === `[1-1]`;
@@ -74,31 +73,32 @@ export default class Square {
 
     renderStartEndSquares() {
         const { squareElement } = this;
-        const { startSquare, endSquare } = this.settings;
-        const bgRegex = /^bg.{8}$/;
+        const { startSquareColor, endSquareColor } = this.settings;
 
         if (this.startSquare) {
-            squareElement.classList.forEach((className) => {
-                if (bgRegex.test(className)) {
-                    squareElement.classList.remove(className);
-                }
-            });
-            squareElement.classList.add(`bg-${startSquare}`);
+            this.resetBg(squareElement);
+            squareElement.classList.add(`bg-${startSquareColor}`);
             squareElement.setAttribute('draggable', true);
         } else if (this.endSquare) {
-            squareElement.classList.forEach((className) => {
-                if (bgRegex.test(className)) {
-                    squareElement.classList.remove(className);
-                }
-            });
-            squareElement.classList.add(`bg-${endSquare}`);
+            this.resetBg(squareElement);
+            squareElement.classList.add(`bg-${endSquareColor}`);
             squareElement.setAttribute('draggable', true);
-        }
+        } else squareElement.removeAttribute('draggable');
     }
 
-    resetCell() {
+    resetSquare() {
         this.startSquare = false;
         this.endSquare = false;
         this.renderSquareType();
+    }
+
+    resetBg() {
+        const { squareElement } = this;
+        const bgRegex = /^bg/;
+        squareElement.classList.forEach((className) => {
+            if (bgRegex.test(className)) {
+                squareElement.classList.remove(className);
+            }
+        });
     }
 }

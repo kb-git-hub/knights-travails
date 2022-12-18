@@ -1,9 +1,9 @@
 const squareConfig = {
     settings: {
-        lightSquare: `sky-500`,
-        darkSquare: `sky-800`,
-        startSquare: `lime-500`,
-        endSquare: `rose-600`,
+        lightSquareColor: `sky-500`,
+        darkSquareColor: `sky-800`,
+        startSquareColor: `lime-500`,
+        endSquareColor: `rose-600`,
     },
 };
 

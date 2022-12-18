@@ -6,9 +6,8 @@ export default function renderSquareEvents() {
 function renderHoverEvent() {
     const { squareElement } = this;
     squareElement.addEventListener('mouseenter', () => {
-        if (this.startSquare || this.endSquare) {
-            squareElement.classList.add('cursor-grab');
-        }
+        if (this.startSquare || this.endSquare) squareElement.classList.add('cursor-grab');
+        else squareElement.classList.remove('cursor-grab');
     });
 }
 
@@ -21,8 +20,39 @@ function dragDropEvents() {
         }
         board.draggedSquare = this;
     });
+
+    squareElement.addEventListener('dragover', (e) => {
+        if (dontAllowDrop.call(this)) return;
+        e.preventDefault();
+    });
+
+    squareElement.addEventListener('drop', () => {
+        this.resetSquare();
+        this.startSquare = board.draggedSquare.startSquare;
+        this.endSquare = board.draggedSquare.endSquare;
+        this.renderSquareType();
+        board.draggedSquare.resetSquare();
+        ///
+        this.resetBg();
+        this.renderHTMLStyling();
+        this.renderStartEndSquares();
+
+        board.draggedSquare.resetBg();
+        board.draggedSquare.renderHTMLStyling();
+        board.draggedSquare.renderStartEndSquares();
+
+        // this.resetStyles();
+        // board.draggedSquare.resetStyles();
+    });
 }
 
 function dontAllowDrag() {
     return !this.startSquare && !this.endSquare;
+}
+
+function dontAllowDrop() {
+    const { board, squareElement } = this;
+    if (board.draggedSquare.squareElement === squareElement) return true;
+    if (board.draggedSquare.startSquare && this.endSquare) return true;
+    if (board.draggedSquare.endSquare && this.startSquare) return true;
 }
