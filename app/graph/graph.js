@@ -55,13 +55,14 @@ export default class KnightGraph {
                 [row + 1, col - 2],
                 [row + 2, col - 1],
             ];
-            result = result.filter((item) => item[0] <= 8 && item[0] >= 1 && item[1] <= 8 && item[1] >= 1);
+            result = result
+                .filter((item) => item[0] <= 8 && item[0] >= 1 && item[1] <= 8 && item[1] >= 1)
+                .map((el) => el.join());
             this.adjacentList[adjKey] = result;
         });
     }
 
     bfs(source, destination) {
         const { graph } = this.adjacentList;
-        console.log(source, destination);
     }
 }
