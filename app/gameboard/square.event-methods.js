@@ -41,7 +41,7 @@ function dragDropEvents() {
         board.draggedSquare.renderHTMLStyling();
         board.draggedSquare.renderStartEndSquares();
 
-        board.runBFS();
+        this.colorPath(board.runBFS());
     });
 }
 

@@ -51,6 +51,6 @@ export default class Gameboard {
 
     runBFS() {
         const bfs = new BFS(this, this.knightGraph.adjacentList);
-        console.log(bfs.findShortestPath());
+        return bfs.findShortestPath();
     }
 }

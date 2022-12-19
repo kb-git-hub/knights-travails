@@ -101,4 +101,13 @@ export default class Square {
             }
         });
     }
+
+    colorPath(nodes) {
+        const {
+            board: { chessBoard },
+        } = this;
+
+        console.log(chessBoard);
+        console.log(chessBoard[nodes[0]]);
+    }
 }
