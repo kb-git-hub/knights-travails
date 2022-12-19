@@ -21,33 +21,22 @@ export default class BFS {
         const end = this.endSquare.join();
         const { graph } = this;
 
-        const queue = [start];
-
-        const path = new Map();
-        path.set(start, [start]); // store path take to reach each node
-
+        const queue = [{ node: start, path: [start] }];
         const visited = new Set(); // store visited nodes
 
         while (queue.length > 0) {
-            const node = queue.shift();
+            const { node, path } = queue.shift();
 
-            if (!visited.has(node)) {
-                visited.add(node);
+            visited.add(node);
 
-                if (node === end) {
-                    return path.get(node);
-                }
+            if (node === end) return path;
 
-                for (const neighbor of graph[node]) {
-                    if (!visited.has(neighbor)) {
-                        queue.push(neighbor);
-
-                        path.set(neighbor, path.get(node).concat(neighbor));
-                    }
+            for (const neighbor of graph[node]) {
+                if (!visited.has(neighbor)) {
+                    queue.push({ node: neighbor, path: [...path, neighbor] });
                 }
             }
         }
-        return visited;
         return null;
     }
 }
