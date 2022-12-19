@@ -43,8 +43,12 @@ function dragDropEvents() {
         board.draggedSquare.renderHTMLStyling();
         board.draggedSquare.renderStartEndSquares();
 
-        const colorPath = new ColorPath(board);
-        console.log(colorPath);
+        // find and resest previous path
+        const pathingSquares = board.getPathingSquares();
+        board.resetPathingSquare(pathingSquares);
+
+        const colorPath = new ColorPath({ board });
+        colorPath.getSteps(board.runBFS());
     });
 }
 

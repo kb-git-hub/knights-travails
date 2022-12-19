@@ -76,17 +76,22 @@ export default class Square {
         const { startSquareColor, endSquareColor } = this.settings;
 
         if (this.startSquare) {
-            this.resetBGColor(squareElement);
+            this.resetBGColor();
             squareElement.classList.add(`bg-${startSquareColor}`);
             squareElement.setAttribute('draggable', true);
         } else if (this.endSquare) {
-            this.resetBGColor(squareElement);
+            this.resetBGColor();
             squareElement.classList.add(`bg-${endSquareColor}`);
             squareElement.setAttribute('draggable', true);
         } else squareElement.removeAttribute('draggable');
     }
 
-    renderPathSquare() {}
+    renderPathSquare() {
+        const { squareElement } = this;
+        const { pathSquareColor } = this.settings;
+
+        squareElement.classList.add(`bg-${pathSquareColor}`);
+    }
 
     resetSquare() {
         this.startSquare = false;

@@ -41,6 +41,7 @@ export default class Gameboard {
                 else square.color = 'light';
                 square.render();
                 this.chessBoard[square.position] = square;
+                square.pathSquare = false;
             }
         }
     }
@@ -52,5 +53,19 @@ export default class Gameboard {
     runBFS() {
         const bfs = new BFS(this, this.knightGraph.adjacentList);
         return bfs.findShortestPath();
+    }
+
+    getPathingSquares() {
+        const { chessBoard } = this;
+        const boardSquares = Object.values(chessBoard);
+        const pathingSquares = boardSquares.filter((square) => square.pathSquare);
+        return pathingSquares;
+    }
+
+    resetPathingSquare(nodes) {
+        nodes.forEach((node) => {
+            node.resetBGColor();
+            node.renderHTMLStyling();
+        });
     }
 }
