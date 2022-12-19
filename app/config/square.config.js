@@ -4,6 +4,7 @@ const squareConfig = {
         darkSquareColor: `sky-800`,
         startSquareColor: `lime-500`,
         endSquareColor: `rose-600`,
+        pathSquareColor: `yellow-300`,
     },
 };
 

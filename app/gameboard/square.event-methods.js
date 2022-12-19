@@ -1,3 +1,5 @@
+import ColorPath from './colorPath.js';
+
 export default function renderSquareEvents() {
     renderHoverEvent.call(this);
     dragDropEvents.call(this);
@@ -33,15 +35,16 @@ function dragDropEvents() {
         this.renderSquareType();
         board.draggedSquare.resetSquare();
 
-        this.resetBg();
+        this.resetBGColor();
         this.renderHTMLStyling();
         this.renderStartEndSquares();
 
-        board.draggedSquare.resetBg();
+        board.draggedSquare.resetBGColor();
         board.draggedSquare.renderHTMLStyling();
         board.draggedSquare.renderStartEndSquares();
 
-        this.colorPath(board.runBFS());
+        const colorPath = new ColorPath(board);
+        console.log(colorPath);
     });
 }
 

@@ -76,15 +76,17 @@ export default class Square {
         const { startSquareColor, endSquareColor } = this.settings;
 
         if (this.startSquare) {
-            this.resetBg(squareElement);
+            this.resetBGColor(squareElement);
             squareElement.classList.add(`bg-${startSquareColor}`);
             squareElement.setAttribute('draggable', true);
         } else if (this.endSquare) {
-            this.resetBg(squareElement);
+            this.resetBGColor(squareElement);
             squareElement.classList.add(`bg-${endSquareColor}`);
             squareElement.setAttribute('draggable', true);
         } else squareElement.removeAttribute('draggable');
     }
+
+    renderPathSquare() {}
 
     resetSquare() {
         this.startSquare = false;
@@ -92,7 +94,7 @@ export default class Square {
         this.renderSquareType();
     }
 
-    resetBg() {
+    resetBGColor() {
         const { squareElement } = this;
         const bgRegex = /^bg/;
         squareElement.classList.forEach((className) => {
@@ -100,14 +102,5 @@ export default class Square {
                 squareElement.classList.remove(className);
             }
         });
-    }
-
-    colorPath(nodes) {
-        const {
-            board: { chessBoard },
-        } = this;
-
-        console.log(chessBoard);
-        console.log(chessBoard[nodes[0]]);
     }
 }
