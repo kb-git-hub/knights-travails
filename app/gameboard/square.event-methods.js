@@ -1,4 +1,4 @@
-import ColorPath from './colorPath.js';
+import SquarePath from './squarePath.js';
 
 export default function renderSquareEvents() {
     renderHoverEvent.call(this);
@@ -35,20 +35,19 @@ function dragDropEvents() {
         this.renderSquareType();
         board.draggedSquare.resetSquare();
 
-        this.resetBGColor();
-        this.renderHTMLStyling();
-        this.renderStartEndSquares();
-
-        board.draggedSquare.resetBGColor();
-        board.draggedSquare.renderHTMLStyling();
-        board.draggedSquare.renderStartEndSquares();
+        this.renderAfterDrop();
+        board.draggedSquare.renderAfterDrop();
 
         // find and resest previous path
-        const pathingSquares = board.getPathingSquares();
-        board.resetPathingSquare(pathingSquares);
+        // const pathingSquares = board.getPathingSquares();
+        // board.resetPathingSquare(pathingSquares);
 
-        const colorPath = new ColorPath({ board });
-        colorPath.getSteps(board.runBFS());
+        const squarePath = new SquarePath({ board });
+        const squarePathNodes = squarePath.getSquarePathNodes(board.runBFS());
+        console.log(
+            '📡 | file: square.event-methods.js:47 | squareElement.addEventListener | squarePath',
+            squarePathNodes
+        );
     });
 }
 

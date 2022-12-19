@@ -71,6 +71,12 @@ export default class Square {
         squareElement.classList[this.endSquare ? 'add' : 'remove']('endSquare');
     }
 
+    renderAfterDrop() {
+        this.resetBGColor();
+        this.renderHTMLStyling();
+        this.renderStartEndSquares();
+    }
+
     renderStartEndSquares() {
         const { squareElement } = this;
         const { startSquareColor, endSquareColor } = this.settings;

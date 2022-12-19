@@ -62,10 +62,10 @@ export default class Gameboard {
         return pathingSquares;
     }
 
-    resetPathingSquare(nodes) {
-        nodes.forEach((node) => {
-            node.resetBGColor();
-            node.renderHTMLStyling();
-        });
-    }
+    // resetPathingSquare(nodes) {
+    //     nodes.forEach((node) => {
+    //         node.resetBGColor();
+    //         node.renderHTMLStyling();
+    //     });
+    // }
 }
