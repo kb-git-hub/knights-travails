@@ -44,7 +44,6 @@ export default class SquarePath {
     clearPathSquares() {
         const activeSquares = this.pathSquares;
         activeSquares.forEach((square) => {
-            console.log(square);
             const {
                 squareElement,
                 settings: { pathSquareColor },
