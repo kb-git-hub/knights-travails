@@ -3,6 +3,7 @@ import { squareConfig } from '../config/square.config.js';
 import BFS from '../graph/bfs.class.js';
 import generateQueryConstructor from '../utils/utils.js';
 import Square from './square.class.js';
+import SquarePath from './squarePath.js';
 
 export default class Gameboard {
     constructor() {
@@ -60,5 +61,10 @@ export default class Gameboard {
         const boardSquares = Object.values(chessBoard);
         const pathingSquares = boardSquares.filter((square) => square.pathSquare);
         return pathingSquares;
+    }
+
+    createPath() {
+        const squarePath = new SquarePath({ board: this });
+        squarePath.getSquarePathNodes(this.runBFS());
     }
 }

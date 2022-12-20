@@ -38,8 +38,7 @@ function dragDropEvents() {
         this.renderAfterDrop();
         board.draggedSquare.renderAfterDrop();
 
-        const squarePath = new SquarePath({ board });
-        squarePath.getSquarePathNodes(board.runBFS());
+        board.createPath();
     });
 }
 
