@@ -61,11 +61,4 @@ export default class Gameboard {
         const pathingSquares = boardSquares.filter((square) => square.pathSquare);
         return pathingSquares;
     }
-
-    // resetPathingSquare(nodes) {
-    //     nodes.forEach((node) => {
-    //         node.resetBGColor();
-    //         node.renderHTMLStyling();
-    //     });
-    // }
 }

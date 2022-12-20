@@ -92,13 +92,6 @@ export default class Square {
         } else squareElement.removeAttribute('draggable');
     }
 
-    renderPathSquare() {
-        const { squareElement } = this;
-        const { pathSquareColor } = this.settings;
-
-        squareElement.classList.add(`bg-${pathSquareColor}`);
-    }
-
     resetSquare() {
         this.startSquare = false;
         this.endSquare = false;

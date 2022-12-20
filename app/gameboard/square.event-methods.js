@@ -38,16 +38,8 @@ function dragDropEvents() {
         this.renderAfterDrop();
         board.draggedSquare.renderAfterDrop();
 
-        // find and resest previous path
-        // const pathingSquares = board.getPathingSquares();
-        // board.resetPathingSquare(pathingSquares);
-
         const squarePath = new SquarePath({ board });
-        const squarePathNodes = squarePath.getSquarePathNodes(board.runBFS());
-        console.log(
-            '📡 | file: square.event-methods.js:47 | squareElement.addEventListener | squarePath',
-            squarePathNodes
-        );
+        squarePath.getSquarePathNodes(board.runBFS());
     });
 }
 
