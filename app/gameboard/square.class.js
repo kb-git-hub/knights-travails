@@ -47,7 +47,7 @@ export default class Square {
             textColor: `text-${darkSquareColor}`,
             fontWeight: `font-extrabold`,
             fontSize: `text-xl`,
-            padding: `pt-10`,
+            padding: `pt-[50px]`,
         };
 
         squareElement.classList.add(
