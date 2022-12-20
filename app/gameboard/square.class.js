@@ -43,6 +43,11 @@ export default class Square {
             outline: `outline`,
             outlineThickness: `outline-4`,
             outlineColor: `outline-sky-900`,
+            textCenter: `text-center`,
+            textColor: `text-${darkSquareColor}`,
+            fontWeight: `font-extrabold`,
+            fontSize: `text-xl`,
+            padding: `pt-10`,
         };
 
         squareElement.classList.add(
@@ -52,7 +57,12 @@ export default class Square {
             htmlStyle.float,
             htmlStyle.outline,
             htmlStyle.outlineThickness,
-            htmlStyle.outlineColor
+            htmlStyle.outlineColor,
+            htmlStyle.textCenter,
+            htmlStyle.textColor,
+            htmlStyle.fontWeight,
+            htmlStyle.fontSize,
+            htmlStyle.padding
         );
     }
 

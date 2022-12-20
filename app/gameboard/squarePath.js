@@ -34,10 +34,13 @@ export default class SquarePath {
     }
 
     renderPathSquare() {
+        let pathNum = 1;
         this.pathElements.forEach((square) => {
             const { squareElement } = square;
             const { pathSquareColor } = square.settings;
             squareElement.classList.add(`bg-${pathSquareColor}`);
+            squareElement.textContent = pathNum;
+            pathNum++;
         });
     }
 
@@ -49,6 +52,7 @@ export default class SquarePath {
                 settings: { pathSquareColor },
             } = square;
             squareElement.classList.remove(`bg-${pathSquareColor}`);
+            squareElement.textContent = '';
             square.pathSquare = false;
         });
     }
